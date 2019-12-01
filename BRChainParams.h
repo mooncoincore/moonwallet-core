@@ -47,47 +47,52 @@ typedef struct {
 } BRChainParams;
 
 static const char *BRMainNetDNSSeeds[] = {
-    "dnsseed.litecoinpool.org.", "seed-a.litecoin.loshan.co.uk.", "dnsseed.thrasher.io.",
-    "dnsseed.koin-project.com.", "dnsseed.litecointools.com.", NULL};
+    "dnsseed01.moonypool.com.", "dnsseed02.moonypool.com.", "dnsseed03.moonypool.com.", NULL};
 
 static const char *BRTestNetDNSSeeds[] = {
-    "testnet-seed.ltc.xurious.com.", "seed-b.litecoin.loshan.co.uk.", "dnsseed-testnet.thrasher.io.", NULL
+    "testnet-seed01.moonypool.com.", NULL
 };
 
 // blockchain checkpoints - these are also used as starting points for partial chain downloads, so they must be at
 // difficulty transition boundaries in order to verify the block difficulty at the immediately following transition
 static const BRCheckPoint BRMainNetCheckpoints[] = {
-    {       0, uint256("12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2"), 1317972665, 0x1e0ffff0 },
-    {   20160, uint256("633036c8df655531c2449b2d09b264cc0b49d945a89be23fd3c1a97361ca198c"), 1319798300, 0x1d055262 },
-    {   40320, uint256("d148cdd2cf44069cef4b63f0feaf30a8d291ca9ea9ba7e83f226b9738c1d5e9c"), 1322522019, 0x1d018053 },
-    {   60480, uint256("3250f0a560d55f039c34bfaee1b71297aa5104ac6641778f9a87d73232d12c6c"), 1325540574, 0x1d00e848 },
-    {   80640, uint256("bedc0a090b740b1902d870aeb6caa89040a24e7d670d46f8ef035fd9d2e9ce80"), 1328779944, 0x1d00ab92 },
-    {  100800, uint256("7b0b620d15f781faaaa73b43607a49d5becb2b803ef19b4010014646cc177a61"), 1331873688, 0x1d00ae9f },
-    {  120960, uint256("dbd6249f30e5690890bc03dabcc0a526c46adcde572be06af4075b6ea28aa251"), 1334881566, 0x1d009e48 },
-    {  141120, uint256("5d5e15a45cecf2b9528e36e63c407167423a2f9963a96bbce3b67b75fd10be2a"), 1338009318, 0x1d00d6a6 },
-    {  161280, uint256("f595c754d0abcfe3616573bfabee01b230ec0ea6b2f2894c40214ea23d772b6c"), 1340918301, 0x1d008881 },
-    {  181440, uint256("d7fa3152959f3c25e33edf825f7cbef75ee651d5f9183cc4ed8d19d57b8f35a4"), 1343534530, 0x1c1cd430 },
-    {  201600, uint256("d481df8e8ce144fca9ae6b3157cc706e903c6ea161a13d2c421270354a02d6d0"), 1346567025, 0x1c1c89e8 },
-    {  282240, uint256("8932095fba44bd6860fd71745c0dca908769221a47166ab1fb442b6cefcd53fb"), 1358801720, 0x1c0ced21 },
-    {  342720, uint256("33f62e026a202be550e8a9df37d638d38991553544e279cb264123378bf46042"), 1367113967, 0x1c0095a5 },
-    {  383040, uint256("5c0a443361c1356796a7db472c69433b6ce6108d61e4403fd9a9d91e01009ce3"), 1372971948, 0x1b481262 },
-    {  443520, uint256("37d668803ed1efc24ffab4a2a90da9ac92679acf68370d7570f042c2bd6d651b"), 1382034998, 0x1b3f864f },
-    {  504000, uint256("97db0624d3d5137bc085f0d731607314972bb4124b85b73420ef9aa5fc10d640"), 1390892377, 0x1b1aa868 },
-    {  564480, uint256("c876276bf12754c2b265787d9e7ab83d429e59761dc63057f728529018db7834"), 1399724592, 0x1b099dce },
-    {  624960, uint256("ccac71fafe98107b81ac3e0eed41190e4d47600962c93c49db8843b53f760bda"), 1408389228, 0x1b02552d },
-    {  685440, uint256("29d2328990dda4c4870846d4e3d573785452bed68e6013930a83fc8d5fe89b09"), 1417289378, 0x1b01473b },
-    {  745920, uint256("04809a35ff6e5054e21d14582072605b812b7d4ae11d3450e7c03a7237e1d35d"), 1426441593, 0x1b019b8c },
-    {  806400, uint256("e2363e8b3e8f237b9b1bfc1c72ede80fef2c7bd1aabcd78afed82065a194b960"), 1435516150, 0x1b019268 },
-    {  846720, uint256("6f5d94d7cfd01f1dbf4aa631b987f8e2ec9d0c57720604787b816bafe34192a8"), 1441561050, 0x1b0187a3 },
-    {  901152, uint256("cfccdf8e3830ae4879e910051ac3dc583b4fb45b83be3a38019e5d9326dfa223"), 1449698771, 0x1b015b0e },
-    {  953568, uint256("e46e01cf1239cffa69408ac162d517bac5a4899972e0328fd0ba4d93e8ad3764"), 1457542869, 0x1b013c91 },
-    { 1058400, uint256("76ce37c66d449a4ffbfc35674cf932da701066a001dc223754f9250dd2bdbc62"), 1473296285, 0x1b013ca7 },
-    { 1260000, uint256("85a22b528d805bf7a641d1d7c6d96ef5054beda3dcab6be7b83f2e3df24b33a8"), 1502976600, 0x1a25a0d3 },
-    { 1411200, uint256("92c85b76f3d4bffca76b23717e4eb1b667c77c96fd52d4dd5dd843bbee64cd73"), 1524838967, 0x1a0203a7 }
+    {    26700, uint256("513f2d61fc89206109d4547b100e0e4ac0a12339957c1ccd8b927a0ff641cdfe"), 1391581252, 0x1c00bd13 },
+    {    66600, uint256("881a7edf40cb76722a89abe3a9b32b5af59928b48d178c1e52dd888a69d289c9"), 1396548592, 0x1c0ec63d },
+    {    66618, uint256("1bf88ab406ff6ea9f43d8fff61ada69189443de12d143f2ebb7ddb019b54dee2"), 1396551065, 0x1c0ec818 },
+    {  1000000, uint256("d806ec36632672626e7a8e764948ea09ff69cf0360edc427008accf68b8fcf6d"), 1481024430, 0x1c1a1b5b },
+    {  1100000, uint256("6988ca75c6bcba6253f4f775788785e71e1efae72c05d678386c3053b2c15863"), 1490248136, 0x1c0edd4c },
+    {  1110000, uint256("084bb5c11d303ad2e061c81921fbde3f07197898e63a59836399218bf97eabc1"), 1494673551, 0x1c155f73 },
+    {  1112500, uint256("e78124b931c6628967b756a1200bf9b5917693536eaac520f876dfe2b35e6637"), 1495626117, 0x1c02f0cb },
+    {  1112513, uint256("5f4fdf9124764fa74652d0e2cbdc170b407c5c96e93d9b78626eaea98c496601"), 1495629733, 0x1c025f14 },
+    {  1212505, uint256("e45b3ba0d0f98922fa848d277917833071629523a10ce72ef5db7884f39c78c3"), 1520505826, 0x1b21d545 },
+    {  1312500, uint256("ef1b810abf761cc054d89a1d1191b73d29d898abb62f72a57c3caf6cbf9547d8"), 1534724248, 0x1c00c8af },
+    {  1412503, uint256("7965ed48962d2959ce054970c4ea64094ebc9e0af42dca14a77157e33f04179c"), 1544207015, 0x1c009d67 },
+    {  1512502, uint256("93bcbe8ff0f938628b5fdd29b46c6d7d859d440bba175e8118a4377be5e67897"), 1554057890, 0x1c00b5f5 },
+    {  1612501, uint256("6e3713dea2fa389ded6e9140068874d49131440147a6385eb4ffcc00595a52af"), 1563965011, 0x1c009e14 },
+    {  1712500, uint256("b87d10af80ab9e966fcb1c0c95cac25c3c74a22e7f9fd04606e992741dfaa38b"), 1573719222, 0x1c011390 }
 };
 
 static const BRCheckPoint BRTestNetCheckpoints[] = {
-    {       0, uint256("4966625a4b2851d9fdee139e56211a0d88575f59ed816ff5e6a63deb4e3e29a0"), 1486949366, 0x1e0ffff0 }
+    {       0, uint256("ae5047b8182d7e9c7f6cdefdb12bc08a95ca7884126e56b15b5082a5ce18e4d7"), 1540452872, 0x1e0ffff0 },
+	{   10983, uint256("69bc203faa0a93efa3e11c9d8b260d48ff49eb54eb877196f433642190008994"), 1540787938, 0x1e0fffff },
+	{  133658, uint256("ca85d40cfaa1e19ea2f2a6982a89538022c6eb58737f293fdbb6ff522b8c31b1"), 1541156068, 0x1e0fffff },
+	{  186531, uint256("cd345adfaca4cf2fd067888d5392bb961697e40e7786b8e9bf9f7723320a6354"), 1541215740, 0x1e0fffff },
+	{  253366, uint256("c057d1926b822b865a29a77c1c2c71dc5c9b5b35ac42d30005ed05fb8ddd2b30"), 1541294474, 0x1e0fffff },
+	{  332184, uint256("2852b3d257277ee3a7045de59e69a4940a0b07aa17507088c83aa34526ede70a"), 1541382243, 0x1e0fffff },
+	{  384254, uint256("561a12ecbca0592ca572089cbcd87d974a1d396d93b69fcdaf74e97d241581aa"), 1541450440, 0x1e0fffff },
+	{  384418, uint256("370d144c6e265183fcab51f8b960a0ad9d87cee6b16f3bbd2c201f16edfba9ad"), 1541450664, 0x1e0fffff },
+	{  594398, uint256("2629ced17214cbbee8bcdf6e764ff5d591382af7d4724e715ad073c97b648706"), 1541664241, 0x1e0fffff },
+	{  650504, uint256("c28ae82187062144ee8ff547269f4349459ea43e5c9acfa4e4f1d710a725da00"), 1541741749, 0x1e0fffff },
+	{  700501, uint256("0dee1b499737d8a4bbff808fd8c4b8db4884029fbec7cc5608cffbe4d14b28ca"), 1541823017, 0x1e0fffff },
+	{  800504, uint256("6afc0c1a69f1163eb31317c0e804bb1b74ffe07a1cfe19e85c204b6a0943ee3c"), 1542024559, 0x1e0fffff },
+	{  900504, uint256("7fd5a418500928cf3efc777d830b1c332375f1916f37d4324f0db0faedd5d3b5"), 1542167143, 0x1e0fffff },
+	{  1000502, uint256("336b7db51e049057a8d93d5bec666fad502026e5f2e8c4e67265a3e8c6f6fa8b"), 1542271845, 0x1e0fffff },
+	{  1100547, uint256("ad475bf4449d7b2294d37374bdcec5f70b972ae188abc1ba480518c92a2e01b9"), 1542617102, 0x1e0fffff },
+	{  1200506, uint256("6dd82e370ff21c503cd67606eacf2d318942d9e9c708fde45bd74a0b86ff5d84"), 1542684509, 0x1e0fffff },
+	{  1300501, uint256("2b2c1b41b7068f231306c5983f31d6e5c0b86920028d416f1bf8c52c173869fc"), 1548127014, 0x1d070a3c },
+	{  1400501, uint256("5d86152c570a575b53bf552d573dcfa66ff721dba37ba06b8dc1e08e762d0089"), 1558426016, 0x1d0b2765 },
+	{  1500502, uint256("5ac72cb8cfbb1b13e862a7368ce599fc502768c79278b758f17d9825c134c9d3"), 1568042950, 0x1d107b45 },
+	{  1524769, uint256("4f870d3dd78b80aebcddd4b35551f28105cd51ccea1d0cec10290b24f5f60907"), 1570342103, 0x1d0a0a59 }
 };
 
 static int BRMainNetVerifyDifficulty(const BRMerkleBlock *block, const BRSet *blockSet)
@@ -117,8 +122,8 @@ static int BRTestNetVerifyDifficulty(const BRMerkleBlock *block, const BRSet *bl
 
 static const BRChainParams BRMainNetParams = {
     BRMainNetDNSSeeds,
-    9333,       // standardPort
-    0xdbb6c0fb, // magicNumber
+    44664,       // standardPort
+    0xe8c0f7f9, // magicNumber
     0,          // services
     BRMainNetVerifyDifficulty,
     BRMainNetCheckpoints,
@@ -126,8 +131,8 @@ static const BRChainParams BRMainNetParams = {
 
 static const BRChainParams BRTestNetParams = {
     BRTestNetDNSSeeds,
-    19335,      // standardPort
-    0xf1c8d2fd, // magicNumber
+    14664,      // standardPort
+    0xf1c8d2f3, // magicNumber
     0,          // services
     BRTestNetVerifyDifficulty,
     BRTestNetCheckpoints,
