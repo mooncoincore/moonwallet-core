@@ -32,10 +32,11 @@
 
 // base58 and base58check encoding: https://en.bitcoin.it/wiki/Base58Check_encoding
 
+static const char base58chars[] = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+
 // returns the number of characters written to str including NULL terminator, or total strLen needed if str is NULL
 size_t BRBase58Encode(char *str, size_t strLen, const uint8_t *data, size_t dataLen)
 {
-    static const char chars[] = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
     size_t i, j, len, zcount = 0;
     
     assert(data != NULL);
@@ -62,8 +63,8 @@ size_t BRBase58Encode(char *str, size_t strLen, const uint8_t *data, size_t data
     len = (zcount + sizeof(buf) - i) + 1;
 
     if (str && len <= strLen) {
-        while (zcount-- > 0) *(str++) = chars[0];
-        while (i < sizeof(buf)) *(str++) = chars[buf[i++]];
+        while (zcount-- > 0) *(str++) = base58chars[0];
+        while (i < sizeof(buf)) *(str++) = base58chars[buf[i++]];
         *str = '\0';
     }
     
@@ -77,7 +78,7 @@ size_t BRBase58Decode(uint8_t *data, size_t dataLen, const char *str)
     size_t i = 0, j, len, zcount = 0;
     
     assert(str != NULL);
-    while (str && *str == '1') str++, zcount++; // count leading zeroes
+    while (str && *str == base58chars[0]) str++, zcount++; // count leading zeroes
     
     uint8_t buf[(str) ? strlen(str)*733/1000 + 1 : 0]; // log(58)/log(256), rounded up
     
