@@ -413,7 +413,7 @@ static void _updateFilterRerequestDone(void *info, int success)
             UInt256 locators[_BRPeerManagerBlockLocators(manager, NULL, 0)];
             size_t count = _BRPeerManagerBlockLocators(manager, locators, sizeof(locators)/sizeof(*locators));
             
-            BRPeerSendGetblocks(peer, locators, count, UInt256_ZERO);
+            BRPeerSendGetblocks(peer, locators, count, UINT256_ZERO);
         }
 
         pthread_mutex_unlock(&manager->lock);
@@ -861,9 +861,9 @@ static void _peerConnected(void *info)
             // request just block headers up to a week before earliestKeyTime, and then merkleblocks after that
             // we do not reset connect failure count yet incase this request times out
             if (manager->lastBlock->timestamp + 7*24*60*60 >= manager->earliestKeyTime) {
-                BRPeerSendGetblocks(peer, locators, count, UInt256_ZERO);
+                BRPeerSendGetblocks(peer, locators, count, UINT256_ZERO);
             }
-            else BRPeerSendGetheaders(peer, locators, count, UInt256_ZERO);
+            else BRPeerSendGetheaders(peer, locators, count, UINT256_ZERO);
         }
         else { // we're already synced
             manager->connectFailureCount = 0; // reset connect failure count
@@ -1299,7 +1299,7 @@ static void _peerRelayedBlock(void *info, BRMerkleBlock *block)
                                                                    sizeof(locators)/sizeof(*locators));
                 
                 peer_log(peer, "calling getblocks");
-                BRPeerSendGetblocks(peer, locators, locatorsCount, UInt256_ZERO);
+                BRPeerSendGetblocks(peer, locators, locatorsCount, UINT256_ZERO);
             }
             
             BRSetAdd(manager->orphans, block); // BUG: limit total orphans to avoid memory exhaustion attack
