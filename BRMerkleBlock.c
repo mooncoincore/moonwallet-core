@@ -32,7 +32,7 @@
 #include <assert.h>
 
 #define MAX_PROOF_OF_WORK 0x1e0fffff    // highest value for difficulty target (higher values are less difficult)
-#define TARGET_TIMESPAN   302400        // the targeted timespan between difficulty target adjustments (3.5*24*60*60)
+#define TARGET_TIMESPAN   28800        // the targeted timespan between difficulty target adjustments (8*60*60)
 
 inline static int _ceil_log2(int x)
 {
